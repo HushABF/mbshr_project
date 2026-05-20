@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mbshr_project/features/menu/data/models/menu_item.dart';
-import 'package:mbshr_project/features/menu/ui/widgets/item_card.dart';
+import 'package:mbshr_project/features/home/data/menu_item.dart';
+import 'package:mbshr_project/features/home/ui/widgets/item_card.dart';
 
 class ItemsList extends StatelessWidget {
   final List<MenuItem> items;
@@ -14,9 +14,7 @@ class ItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+    return SliverList.separated(
       itemCount: items.length,
       separatorBuilder: (_, _) => const Divider(height: 1),
       itemBuilder: (context, index) => ItemCard(

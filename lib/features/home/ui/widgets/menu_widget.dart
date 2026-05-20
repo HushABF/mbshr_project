@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mbshr_project/features/menu/data/models/menu_item.dart';
-import 'package:mbshr_project/features/menu/ui/widgets/items_list.dart';
+import 'package:mbshr_project/features/home/data/menu_item.dart';
+import 'package:mbshr_project/features/home/ui/widgets/items_list.dart';
 
-class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+class MenuWidget extends StatefulWidget {
+  const MenuWidget({super.key});
 
   @override
-  State<MenuScreen> createState() => _MenuScreenState();
+  State<MenuWidget> createState() => _MenuWidgetState();
 }
 
-class _MenuScreenState extends State<MenuScreen> {
+class _MenuWidgetState extends State<MenuWidget> {
   List<MenuItem> _items = const [
     MenuItem(
       name: 'Tea',
       description: 'Warm cup of hot chocolate with whipped cream',
-      imagePath: 'mbshr_project/assets/images/food.png',
+      imagePath: 'assets/images/food.png',
       calories: 300,
       likes: 20,
       price: 35,
@@ -23,7 +23,7 @@ class _MenuScreenState extends State<MenuScreen> {
     MenuItem(
       name: 'Hot Chocolate',
       description: 'Warm cup of hot chocolate with whipped cream',
-      imagePath: 'mbshr_project/assets/images/food.png',
+      imagePath: 'assets/images/tea.png',
       calories: 450,
       likes: 20,
       price: 40,
@@ -32,7 +32,7 @@ class _MenuScreenState extends State<MenuScreen> {
     MenuItem(
       name: 'Cappuccino',
       description: 'Rich espresso with steamed milk foam on top',
-      imagePath: 'mbshr_project/assets/images/food.png',
+      imagePath: 'assets/images/steak.png',
       calories: 120,
       likes: 35,
       price: 25,
@@ -58,12 +58,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: ItemsList(items: _items, onFavoriteToggle: _toggleFavorite),
-        ),
-      ),
-    );
+    return ItemsList(items: _items, onFavoriteToggle: _toggleFavorite);
   }
 }

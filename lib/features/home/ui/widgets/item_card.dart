@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mbshr_project/core/helpers/spacing.dart';
 import 'package:mbshr_project/core/theming/colors.dart';
 import 'package:mbshr_project/core/theming/styles.dart';
-import 'package:mbshr_project/features/menu/data/models/menu_item.dart';
+import 'package:mbshr_project/features/home/data/menu_item.dart';
 
 class ItemCard extends StatelessWidget {
   final MenuItem item;
@@ -69,10 +69,17 @@ class _ItemImage extends StatelessWidget {
           right: 0,
           child: GestureDetector(
             onTap: onFavoriteToggle,
-            child: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: ColorsManager.pink,
-              size: 20.sp,
+            child: Padding(
+              padding: const EdgeInsets.all(5),
+              child: CircleAvatar(
+                backgroundColor: ColorsManager.blueGray,
+                radius: 13,
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: ColorsManager.pink,
+                  size: 18.sp,
+                ),
+              ),
             ),
           ),
         ),
