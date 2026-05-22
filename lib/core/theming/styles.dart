@@ -54,4 +54,9 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: Colors.white,
   );
+  static TextStyle font12MainPurpleMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsManager.mainPurple,
+  );
 }
