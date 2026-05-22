@@ -110,7 +110,7 @@ class _FilterTab extends StatelessWidget {
       decoration: BoxDecoration(
         color: isSelected ? Colors.white : Colors.transparent,
         border: Border.all(
-          color: isSelected ? ColorsManager.darkCyan : ColorsManager.lightPurple,
+          color: isSelected ? ColorsManager.darkCyan : ColorsManager.blueGray,
           width: 1,
         ),
         borderRadius: BorderRadius.circular(20.r),

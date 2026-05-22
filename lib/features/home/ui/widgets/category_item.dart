@@ -29,7 +29,7 @@ class CategoryItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
               border: isSelected
-                  ? Border.all(color: ColorsManager.mainPurple, width: 2)
+                  ? Border.all(color: ColorsManager.darkCyan, width: 2)
                   : Border.all(color: Colors.transparent, width: 2),
               color: const Color(0xFFF5F5F5),
             ),
@@ -46,7 +46,7 @@ class CategoryItem extends StatelessWidget {
           Text(
             category.name,
             style: isSelected
-                ? TextStyles.font12MainPurpleMedium
+                ? TextStyles.font12DarkCyanMedium
                 : TextStyles.font12GreyRegular,
           ),
           SizedBox(height: 4.h),
@@ -55,7 +55,7 @@ class CategoryItem extends StatelessWidget {
             width: isSelected ? 24.w : 0,
             height: 3.h,
             decoration: BoxDecoration(
-              color: ColorsManager.mainPurple,
+              color: ColorsManager.darkCyan,
               borderRadius: BorderRadius.circular(2.r),
             ),
           ),
