@@ -7,20 +7,13 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16.r),
-        child: SizedBox(
-          height: 180.h,
-          width: double.infinity,
-          child: Image.asset(
-            'assets/images/steak.png',
-            fit: BoxFit.cover,
-            errorBuilder: (_, _, _) =>
-                Container(height: 180.h, color: const Color(0xFFEEEEEE)),
-          ),
-        ),
+      padding: EdgeInsets.only(
+        top: 32.r,
+        bottom: 10.r,
+        right: 12.r,
+        left: 24.r,
       ),
+      child: Image.asset('assets/images/main-food-ad.png'),
     );
   }
 }

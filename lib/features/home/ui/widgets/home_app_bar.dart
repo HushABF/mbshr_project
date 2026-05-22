@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:mbshr_project/core/helpers/spacing.dart';
 import 'package:mbshr_project/core/theming/colors.dart';
 import 'package:mbshr_project/core/theming/styles.dart';
 
@@ -12,49 +14,51 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorsManager.mainPurple,
-      elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.menu, color: Colors.white, size: 24.sp),
-        onPressed: () {},
-      ),
       centerTitle: true,
+      backgroundColor: ColorsManager.mainPurple,
+      leading: IconButton(
+        onPressed: () {},
+        icon: SvgPicture.asset(
+          'assets/svgs/three_lines_menu.svg',
+          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+        ),
+      ),
       title: Column(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: .center,
         children: [
           Text('Mbshr', style: TextStyles.font20WhiteSemiBold),
           Text('Riyadh Branch', style: TextStyles.font12WhiteRegular),
         ],
       ),
       actions: [
-        Padding(
-          padding: EdgeInsets.only(right: 12.w),
-          child: const _LanguageButton(),
+        Container(
+          padding: EdgeInsets.only(
+            left: 4.r,
+            right: 12.r,
+            bottom: 4.r,
+            top: 4.r,
+          ),
+          margin: EdgeInsets.only(right: 16.r),
+          decoration: BoxDecoration(
+            color: ColorsManager.lightPurple,
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          child: Row(
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  'assets/images/united-states.png',
+                  // fit: .cover,
+                  width: 24.w,
+                  height: 24.h,
+                ),
+              ),
+              horizontalSpace(6),
+              Text('EN', style: TextStyles.font12WhiteRegular),
+            ],
+          ),
         ),
       ],
-    );
-  }
-}
-
-class _LanguageButton extends StatelessWidget {
-  const _LanguageButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 1),
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('🇬🇧', style: TextStyle(fontSize: 14.sp)),
-          SizedBox(width: 4.w),
-          Text('EN', style: TextStyles.font12WhiteRegular),
-        ],
-      ),
     );
   }
 }
