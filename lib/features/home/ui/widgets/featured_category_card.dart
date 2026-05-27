@@ -16,7 +16,7 @@ class FeaturedCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(minHeight: 100.h),
+      height: 100,  
       padding: EdgeInsets.all(8.r),
       margin: EdgeInsets.only(left: 22.r, right: 10.r),
       decoration: BoxDecoration(

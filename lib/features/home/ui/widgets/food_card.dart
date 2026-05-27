@@ -81,15 +81,12 @@ class FoodCard extends StatelessWidget {
                     style: TextStyles.font12GreyRegular,
                   ),
                   SizedBox(height: 8.h),
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: 4.w,
-                    runSpacing: 4.h,
+                  Row(
                     children: [
                       SvgPicture.asset('assets/svgs/kcal.svg'),
-                    //  horizontalSpace(4),
+                      horizontalSpace(4),
                       Text('300 Kcal', style: TextStyles.font12GreyRegular),
-                     // horizontalSpace(4),
+                      horizontalSpace(4),
                       GestureDetector(
                         key: const Key('smallFavGestureDetector'),
                         onTap: onToggleSmall,
@@ -99,7 +96,7 @@ class FoodCard extends StatelessWidget {
                           size: 24.r,
                         ),
                       ),
-                     // horizontalSpace(4),
+                      horizontalSpace(4),
                       Text('20 likes', style: TextStyles.font12GreyRegular),
                     ],
                   ),
