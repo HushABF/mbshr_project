@@ -5,7 +5,6 @@ import 'package:mbshr_project/core/helpers/spacing.dart';
 import 'package:mbshr_project/core/theming/colors.dart';
 import 'package:mbshr_project/core/theming/styles.dart';
 
-
 class FoodCard extends StatelessWidget {
   const FoodCard({
     super.key,
@@ -37,13 +36,17 @@ class FoodCard extends StatelessWidget {
                 child: SizedBox(
                   width: 150.r,
                   height: 150.r,
-                  child: Image.asset('assets/images/tea.png'),
+                  child: Image.asset(
+                    key: const Key('teaImage'),
+                    'assets/images/tea.png',
+                  ),
                 ),
               ),
               Positioned(
                 top: 6.r,
                 right: 0.r,
                 child: GestureDetector(
+                  key: const Key('bigFavGestureDetector'),
                   onTap: onToggleBig,
                   child: Container(
                     width: 32.w,
@@ -84,6 +87,7 @@ class FoodCard extends StatelessWidget {
                       Text('300 Kcal', style: TextStyles.font12GreyRegular),
                       horizontalSpace(4),
                       GestureDetector(
+                        key: const Key('smallFavGestureDetector'),
                         onTap: onToggleSmall,
                         child: Icon(
                           smallFav ? Icons.favorite : Icons.favorite_border,
@@ -92,7 +96,13 @@ class FoodCard extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(4),
-                      Text('20 likes', style: TextStyles.font12GreyRegular),
+                      Flexible(
+                        child: Text(
+                          '20 likes',
+                          style: TextStyles.font12GreyRegular,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ],
                   ),
                   verticalSpace(6),
