@@ -25,12 +25,13 @@ class SubCategoryItem extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.r),
-            child: SizedBox(
-              width: 88.w,
-              height: 88.h,
-              child: Image.asset(imageAsset),
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.r),
+                child: Image.asset(imageAsset),
+              ),
             ),
           ),
           verticalSpace(5),

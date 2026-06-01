@@ -38,7 +38,6 @@ class FoodCard extends StatelessWidget {
                   height: 150.r,
                   child: Image.asset(
                     key: const Key('teaImage'),
-
                     'assets/images/tea.png',
                   ),
                 ),
@@ -97,7 +96,13 @@ class FoodCard extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(4),
-                      Text('20 likes', style: TextStyles.font12GreyRegular),
+                      Flexible(
+                        child: Text(
+                          '20 likes',
+                          style: TextStyles.font12GreyRegular,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ],
                   ),
                   verticalSpace(6),
