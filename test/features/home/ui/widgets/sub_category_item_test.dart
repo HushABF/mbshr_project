@@ -5,6 +5,8 @@ import 'package:mbshr_project/core/theming/colors.dart';
 import 'package:mbshr_project/core/theming/styles.dart';
 import 'package:mbshr_project/features/home/ui/widgets/sub_category_item.dart';
 
+import '../../../../helpers/test_helpers.dart';
+
 void main() {
   group('SubCategoryItem Widget Test', () {
     Widget buildTestableWidget({
@@ -29,6 +31,8 @@ void main() {
     testWidgets('renders label and image correctly', (
       WidgetTester tester,
     ) async {
+      Helper.useDesignSize(tester);
+
       await tester.pumpWidget(
         buildTestableWidget(selected: false, onTap: () {}),
       );
@@ -38,6 +42,8 @@ void main() {
     });
 
     testWidgets('calls onTap when tapped', (WidgetTester tester) async {
+      Helper.useDesignSize(tester);
+
       bool tapped = false;
 
       await tester.pumpWidget(
@@ -56,6 +62,8 @@ void main() {
     });
 
     testWidgets('shows selected styles correctly', (WidgetTester tester) async {
+      Helper.useDesignSize(tester);
+
       await tester.pumpWidget(
         buildTestableWidget(selected: true, onTap: () {}),
       );
@@ -74,6 +82,7 @@ void main() {
     testWidgets('shows unselected styles correctly', (
       WidgetTester tester,
     ) async {
+      Helper.useDesignSize(tester);
       await tester.pumpWidget(
         buildTestableWidget(selected: false, onTap: () {}),
       );

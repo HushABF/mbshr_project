@@ -3,10 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mbshr_project/features/home/ui/widgets/category_chip.dart';
 
+import '../../../../helpers/test_helpers.dart';
+
 void main() {
   testWidgets('CategoryChip displays label correctly', (
     WidgetTester tester,
   ) async {
+    Helper.useDesignSize(tester);
+
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -24,6 +28,8 @@ void main() {
   testWidgets('CategoryChip triggers onTap callback', (
     WidgetTester tester,
   ) async {
+    Helper.useDesignSize(tester);
+
     bool tapped = false;
 
     await tester.pumpWidget(
@@ -49,6 +55,8 @@ void main() {
   });
 
   testWidgets('CategoryChip shows selected style', (WidgetTester tester) async {
+    Helper.useDesignSize(tester);
+
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),

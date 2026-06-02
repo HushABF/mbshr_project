@@ -4,16 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mbshr_project/features/bottom_nav/ui/bottom_navigation_bar.dart';
 import 'package:mbshr_project/features/home/ui/screens/home_screen.dart';
 
+import '../../../helpers/test_helpers.dart';
+
 void main() {
   Future<void> pumpBottomNav(WidgetTester tester) async {
-    final binding = tester.binding;
-
-    // binding.window.physicalSizeTestValue = const Size(1400, 3000);
-    // binding.window.devicePixelRatioTestValue = 1.0;
-
-    addTearDown(binding.window.clearPhysicalSizeTestValue);
-    addTearDown(binding.window.clearDevicePixelRatioTestValue);
-    await tester.binding.setSurfaceSize(const Size(375, 812));
+    Helper.useDesignSize(tester);
 
     await tester.pumpWidget(
       ScreenUtilInit(

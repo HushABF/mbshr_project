@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     final item = HomeScreen.kHomeSubCategories[index];
                     return SubCategoryItem(
+                      key: Key('sub_category_$index'),
                       label: item.name,
                       imageAsset: item.imagePath,
                       selected: index == _selectedSubCategoryIndex,
@@ -120,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: _foodItemCount,
             itemBuilder: (context, index) {
               return FoodCard(
+                key: Key('food_card_$index'),
                 bigFav: _bigFavorites[index],
                 smallFav: _smallFavorites[index],
                 onToggleBig: () => setState(() {

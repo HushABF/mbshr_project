@@ -3,8 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mbshr_project/features/home/ui/widgets/food_card.dart';
 
+import '../../../../helpers/test_helpers.dart';
+
 void main() {
   testWidgets('FoodCard displays data correctly', (WidgetTester tester) async {
+    Helper.useDesignSize(tester);
+
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -42,6 +46,8 @@ void main() {
   testWidgets('FoodCard runs GestureDetectors correctly', (
     WidgetTester tester,
   ) async {
+    Helper.useDesignSize(tester);
+
     bool bigTapped = false;
     bool smallTapped = false;
 
@@ -68,6 +74,8 @@ void main() {
     await tester.tap(find.byKey(const Key('bigFavGestureDetector')));
     await tester.tap(find.byKey(const Key('smallFavGestureDetector')));
 
+    await tester.pump();
+
     expect(bigTapped, true);
     expect(smallTapped, true);
 
@@ -77,6 +85,8 @@ void main() {
   testWidgets('FoodCard shows favorite icons correctly', (
     WidgetTester tester,
   ) async {
+    Helper.useDesignSize(tester);
+
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -95,6 +105,6 @@ void main() {
 
     expect(find.byIcon(Icons.favorite), findsNWidgets(2));
 
-    expect(find.byIcon(Icons.favorite), findsNWidgets(2));
+    //  expect(find.byIcon(Icons.favorite), findsNWidgets(2));
   });
 }

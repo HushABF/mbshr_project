@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mbshr_project/core/theming/colors.dart';
 import 'package:mbshr_project/features/home/ui/screens/home_screen.dart';
+
+import '../../../../helpers/test_helpers.dart';
 
 void main() {
   testWidgets('HomeScreen displays important widgets correctly', (
     WidgetTester tester,
   ) async {
-    final binding = tester.binding;
-
-    binding.window.physicalSizeTestValue = const Size(1400, 3000);
-    binding.window.devicePixelRatioTestValue = 1.0;
-
-    addTearDown(binding.window.clearPhysicalSizeTestValue);
-    addTearDown(binding.window.clearDevicePixelRatioTestValue);
+    Helper.useDesignSize(tester);
 
     await tester.pumpWidget(
       ScreenUtilInit(
@@ -35,18 +32,10 @@ void main() {
     expect(find.text('Breakfast'), findsOneWidget);
 
     expect(find.text('Tea'), findsWidgets);
-
-    expect(find.byType(HomeScreen), findsOneWidget);
   });
 
   testWidgets('HomeScreen scroll works correctly', (WidgetTester tester) async {
-    final binding = tester.binding;
-
-    binding.window.physicalSizeTestValue = const Size(1400, 3000);
-    binding.window.devicePixelRatioTestValue = 1.0;
-
-    addTearDown(binding.window.clearPhysicalSizeTestValue);
-    addTearDown(binding.window.clearDevicePixelRatioTestValue);
+    Helper.useDesignSize(tester);
 
     await tester.pumpWidget(
       ScreenUtilInit(
@@ -61,19 +50,12 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    expect(find.text('Tea'), findsWidgets);
+    // 👇 هنا المهم
+    expect(find.byKey(const Key('food_card_3')), findsOneWidget);
   });
 
-  testWidgets('HomeScreen interactions work correctly', (
-    WidgetTester tester,
-  ) async {
-    final binding = tester.binding;
-
-    binding.window.physicalSizeTestValue = const Size(1400, 3000);
-    binding.window.devicePixelRatioTestValue = 1.0;
-
-    addTearDown(binding.window.clearPhysicalSizeTestValue);
-    addTearDown(binding.window.clearDevicePixelRatioTestValue);
+  testWidgets('HomeScreen interactions work correctly', (tester) async {
+    Helper.useDesignSize(tester);
 
     await tester.pumpWidget(
       ScreenUtilInit(
@@ -84,14 +66,25 @@ void main() {
 
     await tester.pumpAndSettle();
 
-    // tap category
-    await tester.tap(find.text('Dessert'));
+    final iconBefore = tester.widget<Icon>(
+      find.descendant(
+        of: find.byKey(const Key('bigFavGestureDetector')).first,
+        matching: find.byType(Icon),
+      ),
+    );
+
+    expect(iconBefore.color, Colors.grey);
+
+    await tester.tap(find.byKey(const Key('bigFavGestureDetector')).first);
     await tester.pump();
 
-    // tap favorite button
-    final favButtons = find.byKey(const Key('bigFavGestureDetector'));
-    await tester.tap(favButtons.first);
+    final iconAfter = tester.widget<Icon>(
+      find.descendant(
+        of: find.byKey(const Key('bigFavGestureDetector')).first,
+        matching: find.byType(Icon),
+      ),
+    );
 
-    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(iconAfter.color, ColorsManager.pink);
   });
 }
