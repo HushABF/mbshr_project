@@ -23,6 +23,7 @@ class SubCategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: AspectRatio(
